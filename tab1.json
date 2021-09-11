@@ -1,0 +1,23 @@
+{
+  "tuning": "E-A-D-G-B-e",
+  "tabMap": [
+    {
+      "times": 10,
+      "notes": [
+        {
+          "string": 6,
+          "fret": 0
+        },
+        {
+          "string": 5,
+          "fret": 2
+        },
+        {
+          "string": 4,
+          "fret": 2
+        }
+      ]
+    },
+    [ { "times": 1, "notes": { "string": 4, "fret": 2 } } ]
+  ]
+}
