@@ -19,6 +19,7 @@
     "typescript": "^3.9.2"
   },
   "dependencies": {
+    "json-test-utility": "^0.3.4",
     "lodash": "^4.17.15"
   }
 }
