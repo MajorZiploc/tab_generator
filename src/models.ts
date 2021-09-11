@@ -1,11 +1,11 @@
-export type Notes = {
+export type Note = {
   string: number;
   fret?: number;
 };
 
 export type Tmap = {
   times?: number;
-  notes: Notes[];
+  notes: Note[];
 };
 
 export type Tab = {
