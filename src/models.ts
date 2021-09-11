@@ -1,6 +1,6 @@
 export type Notes = {
   string: number;
-  fret: number;
+  fret?: number;
 };
 
 export type Tmap = {
