@@ -18,6 +18,7 @@
         }
       ]
     },
-    [ { "times": 1, "notes": { "string": 4, "fret": 2 } } ]
+    { "times": 2, "notes": [{ "string": 4, "fret": 2 }] },
+    { "notes": [{ "string": 4, "fret": 2 }] }
   ]
 }
