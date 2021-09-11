@@ -5,20 +5,20 @@
       "times": 10,
       "notes": [
         {
-          "string": 6,
+          "stringNum": 6,
           "fret": 0
         },
         {
-          "string": 5,
+          "stringNum": 5,
           "fret": 2
         },
         {
-          "string": 4,
+          "stringNum": 4,
           "fret": 2
         }
       ]
     },
-    { "times": 2, "notes": [{ "string": 4, "fret": 2 }] },
-    { "notes": [{ "string": 4, "fret": 2 }] }
+    { "times": 2, "notes": [{ "stringNum": 4, "fret": 2 }] },
+    { "notes": [{ "stringNum": 4, "fret": 2 }] }
   ]
 }

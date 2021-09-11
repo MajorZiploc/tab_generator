@@ -1,5 +1,5 @@
 export type Note = {
-  string: number;
+  stringNum: number;
   fret?: number;
 };
 
