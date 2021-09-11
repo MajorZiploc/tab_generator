@@ -7,37 +7,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Json Comparer tool test",
+      "name": "index ts",
       "protocol": "inspector",
-      "program": "${workspaceRoot}\\node_modules\\tape\\bin\\tape",
-      "args": ["-r", "ts-node/register", "${workspaceRoot}\\src\\spec\\JsonComparer.test.ts"],
-      "cwd": "${workspaceRoot}"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Json Refactor tool test",
-      "protocol": "inspector",
-      "program": "${workspaceRoot}\\node_modules\\tape\\bin\\tape",
-      "args": ["-r", "ts-node/register", "${workspaceRoot}\\src\\spec\\JsonRefactor.test.ts"],
-      "cwd": "${workspaceRoot}"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Json Migration tool test",
-      "protocol": "inspector",
-      "program": "${workspaceRoot}\\node_modules\\tape\\bin\\tape",
-      "args": ["-r", "ts-node/register", "${workspaceRoot}\\src\\spec\\JsonMigration.test.ts"],
-      "cwd": "${workspaceRoot}"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Json Masker tool test",
-      "protocol": "inspector",
-      "program": "${workspaceRoot}\\node_modules\\tape\\bin\\tape",
-      "args": ["-r", "ts-node/register", "${workspaceRoot}\\src\\spec\\JsonMasker.test.ts"],
+      "args": ["-r", "ts-node/register", "${workspaceRoot}/src/index.ts"],
       "cwd": "${workspaceRoot}"
     }
   ]
