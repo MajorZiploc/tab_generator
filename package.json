@@ -1,0 +1,23 @@
+{
+  "name": "json-test-utility",
+  "version": "0.3.4",
+  "description": "JSON utility for refactoring, comparing, and migrating json test data.",
+  "main": "./build/index.js",
+  "types": "./index.d.ts",
+  "repository": "https://github.com/MajorZiploc/json-test-utility",
+  "author": "Manyu Lakhotia",
+  "license": "MIT",
+  "scripts": {
+    "toJS": "tsc"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.151",
+    "@types/tape": "^4.13.0",
+    "@types/tape-catch": "^1.0.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
