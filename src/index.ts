@@ -31,8 +31,8 @@ function main(tab: Tab) {
   console.log(numOfStrings);
   // Set missing times to 1
   fullTab = {
-    tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, notes: fillInNotes(t.notes, numOfStrings), ...t })),
     ...fullTab,
+    tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, notes: fillInNotes(t.notes, numOfStrings), ...t })),
   };
   // console.log(JSON.stringify(fullTab, null, 2));
   const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notes, numOfStrings, t.times ?? 1));
@@ -48,7 +48,7 @@ function main(tab: Tab) {
   const prepedPrintValues = jr
     .toKeyValArray(gStringStrs)
     .sort((g1, g2) => (g1.key > g1.key ? -1 : 1))
-    .map(o => ({ value: _.chunk(o.value.split(''), 40).map(c => c.join('')), key: o.key }));
+    .map(o => ({ ...o, value: _.chunk(o.value.split(''), 40).map(c => c.join('')) }));
   console.log(JSON.stringify(prepedPrintValues, null, 2));
 
   const numOfChunks = prepedPrintValues.find(p => p.value).value.length;
