@@ -50,6 +50,16 @@ function main(tab: Tab) {
     .sort((g1, g2) => (g1.key > g1.key ? -1 : 1))
     .map(o => ({ value: _.chunk(o.value.split(''), 40).map(c => c.join('')), key: o.key }));
   console.log(JSON.stringify(prepedPrintValues, null, 2));
+
+  const numOfChunks = prepedPrintValues.find(p => p.value).value.length;
+  console.log(`Tuning: ${fullTab.tuning}`);
+  [...Array(numOfChunks).keys()].forEach(chunkIndex => {
+    console.log(chunkIndex);
+    prepedPrintValues.forEach(gs => {
+      console.log(gs.value[chunkIndex]);
+    });
+    console.log('');
+  });
 }
 
 main(tab);
