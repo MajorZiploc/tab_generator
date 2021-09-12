@@ -16,16 +16,34 @@ function fillInNotes(notes: Note[], numOfStrings: number) {
   return notes;
 }
 
+function notesToString(notes: Note[], numOfStrings: number, times: number) {
+  const genList = (c: string) => [...Array(times)].map(n => c);
+  return notes.map(n => ({
+    tabMarkers: n.fret === undefined ? genList('x') : genList((n.fret ?? '') + ''),
+    ...n,
+  }));
+}
+
 function main(tab: Tab) {
   let fullTab = tab;
   const numOfStrings = tab.tuning.split('-').length;
   console.log(numOfStrings);
   // Set missing times to 1
   fullTab = {
-    tabMap: tab.tabMap.map(t => ({ times: t.times ?? 1, notes: fillInNotes(t.notes, numOfStrings), ...t })),
-    ...tab,
+    tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, notes: fillInNotes(t.notes, numOfStrings), ...t })),
+    ...fullTab,
   };
-  console.log(JSON.stringify(fullTab, null, 2));
+  // console.log(JSON.stringify(fullTab, null, 2));
+  const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notes, numOfStrings, t.times ?? 1));
+  const gStringStrs = [...Array(numOfStrings).keys()]
+    .map(n => n + 1)
+    .reduce((acc, currentString) => {
+      const currentStringNotes = flattenedNotes.filter(n => n.stringNum === currentString);
+      const tabMarkers = currentStringNotes.flatMap(sn => sn.tabMarkers);
+      acc['' + currentString] = tabMarkers.join('-');
+      return acc;
+    }, {});
+  console.log(JSON.stringify(gStringStrs, null, 2));
 }
 
 main(tab);
