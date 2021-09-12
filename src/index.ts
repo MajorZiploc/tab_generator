@@ -47,7 +47,7 @@ function main(tab: Tab) {
   console.log(JSON.stringify(gStringStrs, null, 2));
   const prepedPrintValues = jr
     .toKeyValArray(gStringStrs)
-    .sort((g1, g2) => (g1.key > g1.key ? -1 : 1))
+    .sort((g1, g2) => (g1.key < g2.key ? -1 : 1))
     .map(o => ({ ...o, value: _.chunk(o.value.split(''), 40).map(c => c.join('')) }));
   console.log(JSON.stringify(prepedPrintValues, null, 2));
 
