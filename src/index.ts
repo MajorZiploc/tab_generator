@@ -1,6 +1,7 @@
 import * as tab from './tab1.json';
 import { Tab, Note } from './models';
 import { jsonRefactor as jr } from 'json-test-utility';
+import _ from 'lodash';
 
 function fillInNotes(notes: Note[], numOfStrings: number) {
   // TODO: Assumes that the notes list doesnt have duplicate stringNum or string Nums outside of the num of strings
@@ -44,6 +45,11 @@ function main(tab: Tab) {
       return acc;
     }, {});
   console.log(JSON.stringify(gStringStrs, null, 2));
+  const prepedPrintValues = jr
+    .toKeyValArray(gStringStrs)
+    .sort((g1, g2) => (g1.key > g1.key ? -1 : 1))
+    .map(o => ({ value: _.chunk(o.value.split(''), 40).map(c => c.join('')), key: o.key }));
+  console.log(JSON.stringify(prepedPrintValues, null, 2));
 }
 
 main(tab);
