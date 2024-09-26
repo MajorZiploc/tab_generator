@@ -5,3 +5,5 @@ build
 tags
 
 Session.vim
+
+cscope.out
