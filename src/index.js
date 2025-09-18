@@ -72,12 +72,12 @@ async function main() {
       acc['' + currentString] = tabMarkers.join('-');
       return acc;
     }, {});
+  const rowSize = tab.rowSize ?? 40;
   // console.log(JSON.stringify(gStringStrs, null, 2));
   const prepedPrintValues = Object.entries(gStringStrs)
     .sort((g1, g2) => (g1[0] < g2[0] ? -1 : 1))
-    .map(o => ({ ...o, value: chunk(o[1].split(''), 40).map(c => c.join('')) }));
+    .map(o => ({ ...o, value: chunk(o[1].split(''), rowSize).map(c => c.join('')) }));
   // console.log(JSON.stringify(prepedPrintValues, null, 2));
-
   const numOfChunks = prepedPrintValues?.find(p => p.value)?.value?.length;
   console.log(`Tuning: ${fullTab.tuning}`);
   [...Array(numOfChunks).keys()].forEach(chunkIndex => {

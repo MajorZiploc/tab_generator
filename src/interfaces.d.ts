@@ -10,5 +10,6 @@ export type Tmap = {
 
 export type Tab = {
   tuning: string;
+  rowSize?: number;
   tabMap: Tmap[];
 };
