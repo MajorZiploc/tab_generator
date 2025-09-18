@@ -4,7 +4,7 @@
   "description": "JSON to tabs",
   "main": "./build/index.js",
   "types": "./index.d.ts",
-  "repository": "https://github.com/MajorZiploc/json-test-utility",
+  "repository": "https://github.com/MajorZiploc/tab_generator",
   "author": "Manyu Lakhotia",
   "license": "MIT",
   "scripts": {
