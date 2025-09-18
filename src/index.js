@@ -36,6 +36,9 @@ function notesToString(notes, numOfStrings, times) {
   }));
 }
 
+/**
+ * @type {(inputArray: any[], chunkSize: number) => any[][]}
+ */
 function chunk(inputArray, chunkSize) {
   const chunkedArray = [];
   for (let i = 0; i < inputArray.length; i += chunkSize) {
