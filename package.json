@@ -1,23 +1,17 @@
 {
-  "name": "json-test-utility",
+  "name": "tab_generator",
   "version": "0.3.4",
-  "description": "JSON utility for refactoring, comparing, and migrating json test data.",
+  "description": "JSON to tabs",
   "main": "./build/index.js",
   "types": "./index.d.ts",
   "repository": "https://github.com/MajorZiploc/json-test-utility",
   "author": "Manyu Lakhotia",
   "license": "MIT",
   "scripts": {
-    "toJS": "tsc",
-    "start": "yarn run toJS && node -r ts-node/register src/index.ts"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.151",
-    "ts-node": "^8.10.1",
-    "typescript": "^3.9.2"
+    "start": "node src/index.js"
   },
   "dependencies": {
-    "json-test-utility": "^0.3.4",
-    "lodash": "^4.17.15"
-  }
+    "fs-extra": "^11.3.2"
+  },
+  "devDependencies": {}
 }

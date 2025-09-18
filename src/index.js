@@ -1,15 +1,21 @@
-import * as tab from './tab1.json';
-import { Tab, Note } from './models';
-import { jsonRefactor as jr } from 'json-test-utility';
-import _ from 'lodash';
+const fs = require('fs-extra');
 
-function fillInNotes(notes: Note[], numOfStrings: number) {
+/**
+ * @typedef {import('./interfaces').Note} Note
+ * @typedef {import('./interfaces').Tab} Tab
+ */
+
+
+/**
+ * @type {(notes: Note[], numOfStrings: number) => Note[]}
+ */
+function fillInNotes(notes, numOfStrings) {
   // TODO: Assumes that the notes list doesnt have duplicate stringNum or string Nums outside of the num of strings
   let currentString = 1;
   while (numOfStrings >= currentString) {
     if (!notes.some(n => n.stringNum === currentString)) {
       // Add the missing string
-      const note: Note = { stringNum: currentString };
+      const note = { stringNum: currentString };
       notes.push(note);
     }
     currentString++;
@@ -17,15 +23,30 @@ function fillInNotes(notes: Note[], numOfStrings: number) {
   return notes;
 }
 
-function notesToString(notes: Note[], numOfStrings: number, times: number) {
-  const genList = (c: string) => [...Array(times)].map(n => c);
+/**
+ * @type {(notes: Note[], numOfStrings: number, times: number) => Note[]}
+ */
+function notesToString(notes, numOfStrings, times) {
+  const genList = (c) => [...Array(times)].map(_ => c);
   return notes.map(n => ({
     tabMarkers: n.fret === undefined ? genList('x') : genList((n.fret ?? '') + ''),
     ...n,
   }));
 }
 
-function main(tab: Tab) {
+function chunk(inputArray, chunkSize) {
+  const chunkedArray = [];
+  for (let i = 0; i < inputArray.length; i += chunkSize) {
+    chunkedArray.push(inputArray.slice(i, i + chunkSize));
+  }
+  return chunkedArray;
+}
+
+/**
+ * @type {() => void}
+ */
+async function main() {
+  const tab = await fs.readJSON(`${__dirname}/../tabs/tab1.json`);
   let fullTab = tab;
   const numOfStrings = tab.tuning.split('-').length;
   console.log(numOfStrings);
@@ -45,16 +66,15 @@ function main(tab: Tab) {
       return acc;
     }, {});
   console.log(JSON.stringify(gStringStrs, null, 2));
-  const prepedPrintValues = jr
-    .toKeyValArray(gStringStrs)
-    .sort((g1, g2) => (g1.key < g2.key ? -1 : 1))
-    .map(o => ({ ...o, value: _.chunk(o.value.split(''), 40).map(c => c.join('')) }));
+  const prepedPrintValues = Object.entries(gStringStrs)
+    .sort((g1, g2) => (g1[0] < g2[0] ? -1 : 1))
+    .map(o => ({ ...o, value: chunk(o[1].split(''), 40).map(c => c.join('')) }));
   console.log(JSON.stringify(prepedPrintValues, null, 2));
 
   const numOfChunks = prepedPrintValues.find(p => p.value).value.length;
   console.log(`Tuning: ${fullTab.tuning}`);
   [...Array(numOfChunks).keys()].forEach(chunkIndex => {
-    console.log(chunkIndex);
+    console.log(`row: ${chunkIndex}`);
     prepedPrintValues.forEach(gs => {
       console.log(gs.value[chunkIndex]);
     });
@@ -62,4 +82,4 @@ function main(tab: Tab) {
   });
 }
 
-main(tab);
+main();
