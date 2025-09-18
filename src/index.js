@@ -1,3 +1,5 @@
+// @ts-check
+
 const fs = require('fs-extra');
 
 /**
@@ -43,10 +45,12 @@ function chunk(inputArray, chunkSize) {
 }
 
 /**
- * @type {() => void}
+ * @type {() => Promise<void>}
  */
 async function main() {
-  const tab = await fs.readJSON(`${__dirname}/../tabs/tab1.json`);
+  // @ts-ignore
+  const this_dir = __dirname;
+  const tab = await fs.readJSON(`${this_dir}/../tabs/tab1.json`);
   let fullTab = tab;
   const numOfStrings = tab.tuning.split('-').length;
   console.log(numOfStrings);
@@ -71,11 +75,11 @@ async function main() {
     .map(o => ({ ...o, value: chunk(o[1].split(''), 40).map(c => c.join('')) }));
   console.log(JSON.stringify(prepedPrintValues, null, 2));
 
-  const numOfChunks = prepedPrintValues.find(p => p.value).value.length;
+  const numOfChunks = prepedPrintValues?.find(p => p.value)?.value?.length;
   console.log(`Tuning: ${fullTab.tuning}`);
   [...Array(numOfChunks).keys()].forEach(chunkIndex => {
     console.log(`row: ${chunkIndex}`);
-    prepedPrintValues.forEach(gs => {
+    prepedPrintValues?.forEach(gs => {
       console.log(gs.value[chunkIndex]);
     });
     console.log('');
