@@ -7,9 +7,7 @@
   "repository": "https://github.com/MajorZiploc/tab_generator",
   "author": "Manyu Lakhotia",
   "license": "MIT",
-  "scripts": {
-    "start": "node src/index.js"
-  },
+  "scripts": {},
   "dependencies": {
     "fs-extra": "^11.3.2"
   },

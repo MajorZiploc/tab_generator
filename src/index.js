@@ -54,8 +54,11 @@ function chunk(inputArray, chunkSize) {
 async function main() {
   // @ts-ignore
   const this_dir = __dirname;
+  // @ts-ignore
+  const tabName = process.argv[2];
+  if (!tabName) throw 'Must specify a tab file name';
   /** @type {Tab} */
-  const tab = await fs.readJSON(`${this_dir}/../tabs/tab1.json`);
+  const tab = await fs.readJSON(`${this_dir}/../tabs/${tabName}.json`);
   let fullTab = tab;
   const numOfStrings = tab.tuning.split('-').length;
   // console.log(numOfStrings);
