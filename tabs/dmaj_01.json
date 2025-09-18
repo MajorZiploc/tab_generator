@@ -14,50 +14,12 @@
 
     {
       "times": 1,
-      "notes": [
-        {
-          "stringNum": 4,
-          "fret": 0
-        },
-        {
-          "stringNum": 3,
-          "fret": 2
-        },
-        {
-          "stringNum": 2,
-          "fret": 3
-        },
-        {
-          "stringNum": 1,
-          "fret": 2
-        }
-      ]
+      "notesString": "0232"
     },
     { "times": 1, "notes": [{}] },
     {
       "times": 1,
-      "notes": [
-        {
-          "stringNum": 6,
-          "fret": 2
-        },
-        {
-          "stringNum": 5,
-          "fret": 4
-        },
-        {
-          "stringNum": 4,
-          "fret": 4
-        },
-        {
-          "stringNum": 3,
-          "fret": 3
-        },
-        {
-          "stringNum": 2,
-          "fret": 2
-        }
-      ]
+      "notesString": "24432x"
     },
     { "times": 1, "notes": [{}] },
     {
