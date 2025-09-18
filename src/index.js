@@ -26,13 +26,15 @@ function fillInNotes(notes, numOfStrings) {
   return notes;
 }
 
+const genList = (times) => (c) => [...Array(times)].map(_ => c);
+
 /**
  * @type {(notes: Note[], numOfStrings: number, times: number, spacer: boolean) => Mark[]}
  */
 function notesToString(notes, numOfStrings, times, spacer) {
-  const genList = (c) => [...Array(times)].map(_ => c);
+  const genListHelper = genList(times);
   return notes.map(n => ({
-    tabMarkers: n.fret == null ? genList(spacer ? '-' : 'x') : genList((n.fret ?? '') + ''),
+    tabMarkers: n.fret == null ? genListHelper(spacer ? '-' : 'x') : genListHelper((n.fret ?? '') + ''),
     ...n,
   }));
 }
@@ -89,6 +91,7 @@ async function main() {
   if (fullTab.scale) {
     console.log(`Scale: ${fullTab.scale}`);
   }
+  console.log(genList(rowSize)('-').join(''));
   [...Array(numOfChunks).keys()].forEach(chunkIndex => {
     console.log(`row: ${chunkIndex}`);
     prepedPrintValues?.forEach(gs => {
