@@ -31,7 +31,7 @@ function fillInNotes(notes, numOfStrings) {
 function notesToString(notes, numOfStrings, times) {
   const genList = (c) => [...Array(times)].map(_ => c);
   return notes.map(n => ({
-    tabMarkers: n.fret === undefined ? genList('x') : genList((n.fret ?? '') + ''),
+    tabMarkers: n.fret == null ? genList('x') : genList((n.fret ?? '') + ''),
     ...n,
   }));
 }
