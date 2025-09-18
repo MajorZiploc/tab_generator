@@ -67,10 +67,10 @@ async function main() {
   // @ts-ignore
   const this_dir = __dirname;
   // @ts-ignore
-  const tabName = process.argv[2];
-  if (!tabName) throw 'Must specify a tab file name';
+  const tabPath = process.argv[2];
+  if (!tabPath) throw 'Must specify a tabPath';
   /** @type {Tab} */
-  const tab = await fs.readJSON(`${this_dir}/../tabs/${tabName}.json`);
+  const tab = await fs.readJSON(tabPath);
   let fullTab = tab;
   const numOfStrings = tab.tuning.split('-').length;
   // console.log(numOfStrings);
