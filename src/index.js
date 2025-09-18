@@ -6,6 +6,7 @@ const fs = require('fs-extra');
  * @typedef {import('./interfaces').Note} Note
  * @typedef {import('./interfaces').Tab} Tab
  * @typedef {import('./interfaces').Mark} Mark
+ * @typedef {import('./interfaces').Tmap} Tmap
  */
 
 
@@ -50,6 +51,15 @@ function chunk(inputArray, chunkSize) {
   return chunkedArray;
 }
 
+function toNumElseId(thing) {
+  const n = Number(thing);
+  if (Number.isNaN(n)) return thing;
+  return n;
+}
+
+/** @type {(t: Tmap) => Note[]} */
+const getNotesFromTMap = t => t.notesString ? t.notesString.split('').reverse().map((e, idx) => ({stringNum: idx+1, fret: toNumElseId(e)})) : t.notes;
+
 /**
  * @type {() => Promise<void>}
  */
@@ -67,7 +77,7 @@ async function main() {
   // Set missing times to 1
   fullTab = {
     ...fullTab,
-    tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, ...t, notes: fillInNotes(t.notes, numOfStrings) })),
+    tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, ...t, notes: fillInNotes(getNotesFromTMap(t), numOfStrings) })),
   };
   // console.log(JSON.stringify(fullTab, null, 2));
   const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notes, numOfStrings, t.times ?? 1, t.spacer ?? false));

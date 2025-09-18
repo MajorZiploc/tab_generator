@@ -6,6 +6,7 @@ export type Note = {
 export type Tmap = {
   times?: number;
   notes: Note[];
+  notesString: string;
   spacer?: boolean;
 };
 
