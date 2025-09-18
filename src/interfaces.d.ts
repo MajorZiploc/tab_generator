@@ -15,3 +15,7 @@ export type Tab = {
   rowNotes?: string[];
   tabMap: Tmap[];
 };
+
+export type Mark = {
+  tabMarkers: string[];
+} & Note;

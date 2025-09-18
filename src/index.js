@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 /**
  * @typedef {import('./interfaces').Note} Note
  * @typedef {import('./interfaces').Tab} Tab
+ * @typedef {import('./interfaces').Mark} Mark
  */
 
 
@@ -26,7 +27,7 @@ function fillInNotes(notes, numOfStrings) {
 }
 
 /**
- * @type {(notes: Note[], numOfStrings: number, times: number, spacer: boolean) => Note[]}
+ * @type {(notes: Note[], numOfStrings: number, times: number, spacer: boolean) => Mark[]}
  */
 function notesToString(notes, numOfStrings, times, spacer) {
   const genList = (c) => [...Array(times)].map(_ => c);
@@ -53,6 +54,7 @@ function chunk(inputArray, chunkSize) {
 async function main() {
   // @ts-ignore
   const this_dir = __dirname;
+  /** @type {Tab} */
   const tab = await fs.readJSON(`${this_dir}/../tabs/tab1.json`);
   let fullTab = tab;
   const numOfStrings = tab.tuning.split('-').length;
@@ -60,7 +62,7 @@ async function main() {
   // Set missing times to 1
   fullTab = {
     ...fullTab,
-    tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, notes: fillInNotes(t.notes, numOfStrings), ...t })),
+    tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, ...t, notes: fillInNotes(t.notes, numOfStrings) })),
   };
   // console.log(JSON.stringify(fullTab, null, 2));
   const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notes, numOfStrings, t.times ?? 1, t.spacer ?? false));
