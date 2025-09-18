@@ -26,12 +26,12 @@ function fillInNotes(notes, numOfStrings) {
 }
 
 /**
- * @type {(notes: Note[], numOfStrings: number, times: number) => Note[]}
+ * @type {(notes: Note[], numOfStrings: number, times: number, spacer: boolean) => Note[]}
  */
-function notesToString(notes, numOfStrings, times) {
+function notesToString(notes, numOfStrings, times, spacer) {
   const genList = (c) => [...Array(times)].map(_ => c);
   return notes.map(n => ({
-    tabMarkers: n.fret == null ? genList('x') : genList((n.fret ?? '') + ''),
+    tabMarkers: n.fret == null ? genList(spacer ? '-' : 'x') : genList((n.fret ?? '') + ''),
     ...n,
   }));
 }
@@ -63,7 +63,7 @@ async function main() {
     tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, notes: fillInNotes(t.notes, numOfStrings), ...t })),
   };
   // console.log(JSON.stringify(fullTab, null, 2));
-  const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notes, numOfStrings, t.times ?? 1));
+  const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notes, numOfStrings, t.times ?? 1, t.spacer ?? false));
   const gStringStrs = [...Array(numOfStrings).keys()]
     .map(n => n + 1)
     .reduce((acc, currentString) => {
@@ -79,12 +79,16 @@ async function main() {
     .map(o => ({ ...o, value: chunk(o[1].split(''), rowSize).map(c => c.join('')) }));
   // console.log(JSON.stringify(prepedPrintValues, null, 2));
   const numOfChunks = prepedPrintValues?.find(p => p.value)?.value?.length;
+  const rowNotes = tab.rowNotes || [];
   console.log(`Tuning: ${fullTab.tuning}`);
   [...Array(numOfChunks).keys()].forEach(chunkIndex => {
     console.log(`row: ${chunkIndex}`);
     prepedPrintValues?.forEach(gs => {
       console.log(gs.value[chunkIndex]);
     });
+    if (rowNotes.length > chunkIndex) {
+      console.log(rowNotes[chunkIndex]);
+    }
     console.log('');
   });
 }
