@@ -56,7 +56,7 @@ async function main() {
   const tab = await fs.readJSON(`${this_dir}/../tabs/tab1.json`);
   let fullTab = tab;
   const numOfStrings = tab.tuning.split('-').length;
-  console.log(numOfStrings);
+  // console.log(numOfStrings);
   // Set missing times to 1
   fullTab = {
     ...fullTab,
@@ -72,11 +72,11 @@ async function main() {
       acc['' + currentString] = tabMarkers.join('-');
       return acc;
     }, {});
-  console.log(JSON.stringify(gStringStrs, null, 2));
+  // console.log(JSON.stringify(gStringStrs, null, 2));
   const prepedPrintValues = Object.entries(gStringStrs)
     .sort((g1, g2) => (g1[0] < g2[0] ? -1 : 1))
     .map(o => ({ ...o, value: chunk(o[1].split(''), 40).map(c => c.join('')) }));
-  console.log(JSON.stringify(prepedPrintValues, null, 2));
+  // console.log(JSON.stringify(prepedPrintValues, null, 2));
 
   const numOfChunks = prepedPrintValues?.find(p => p.value)?.value?.length;
   console.log(`Tuning: ${fullTab.tuning}`);
