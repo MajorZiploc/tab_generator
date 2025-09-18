@@ -86,6 +86,9 @@ async function main() {
   const numOfChunks = prepedPrintValues?.find(p => p.value)?.value?.length;
   const rowNotes = tab.rowNotes || [];
   console.log(`Tuning: ${fullTab.tuning}`);
+  if (fullTab.scale) {
+    console.log(`Scale: ${fullTab.scale}`);
+  }
   [...Array(numOfChunks).keys()].forEach(chunkIndex => {
     console.log(`row: ${chunkIndex}`);
     prepedPrintValues?.forEach(gs => {

@@ -10,6 +10,7 @@ export type Tmap = {
 };
 
 export type Tab = {
+  scale?: string;
   tuning: string;
   rowSize?: number;
   rowNotes?: string[];

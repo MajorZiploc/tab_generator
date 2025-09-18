@@ -1,11 +1,13 @@
 {
 
+  "scale": "D major / B minor",
+
   "tuning": "E-A-D-G-B-e",
 
   "rowSize": 80,
 
   "rowNotes": [
-    "D->F#->G; Bm->A; G->Bm->A;"
+    "D->F#->G * 2; Bm->A * 1; G->Bm->A * 2;"
   ],
 
   "tabMap": [
