@@ -27,12 +27,15 @@ function fillInNotes(notes, numOfStrings) {
   return notes;
 }
 
+/**
+ * @type {(times: number) => (c: any) => any[]}
+ */
 const genList = (times) => (c) => [...Array(times)].map(_ => c);
 
 /**
- * @type {(notes: Note[], numOfStrings: number, times: number) => Mark[]}
+ * @type {(notes: Note[], times: number) => Mark[]}
  */
-function notesToString(notes, numOfStrings, times) {
+function notesToString(notes, times) {
   const genListHelper = genList(times);
   return notes.map(n => ({
     tabMarkers: n.fret == null ? genListHelper('-') : genListHelper((n.fret ?? '') + ''),
@@ -51,6 +54,9 @@ function chunk(inputArray, chunkSize) {
   return chunkedArray;
 }
 
+/**
+ * @type {(thing: any) => any}
+ */
 function toNumElseId(thing) {
   const n = Number(thing);
   if (Number.isNaN(n)) return thing;
@@ -65,8 +71,6 @@ const getNotesFromTMap = t => t.notesStructured ? t.notesStructured : (t.notes |
  */
 async function main() {
   // @ts-ignore
-  const this_dir = __dirname;
-  // @ts-ignore
   const tabPath = process.argv[2];
   if (!tabPath) throw 'Must specify a tabPath';
   /** @type {Tab} */
@@ -80,7 +84,7 @@ async function main() {
     tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, ...t, notesStructured: fillInNotes(getNotesFromTMap(t), numOfStrings) })),
   };
   // console.log(JSON.stringify(fullTab, null, 2));
-  const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notesStructured, numOfStrings, t.times ?? 1));
+  const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notesStructured, t.times ?? 1));
   const gStringStrs = [...Array(numOfStrings).keys()]
     .map(n => n + 1)
     .reduce((acc, currentString) => {
