@@ -7,7 +7,6 @@ export type Tmap = {
   times?: number;
   notes: Note[];
   notesString: string;
-  spacer?: boolean;
 };
 
 export type Tab = {
