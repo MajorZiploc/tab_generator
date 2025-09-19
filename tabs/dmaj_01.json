@@ -14,44 +14,44 @@
 
     {
       "times": 1,
-      "notesString": "0232"
+      "notes": "0232"
     },
-    { "times": 1, "notes": [{}] },
+    { "times": 1, "notesStructured": [{}] },
     {
       "times": 1,
-      "notesString": "24432x"
+      "notes": "24432x"
     },
-    { "times": 1, "notes": [{}] },
+    { "times": 1, "notesStructured": [{}] },
     {
       "times": 1,
-      "notesString": "35543x"
+      "notes": "35543x"
     },
-    { "times": 5, "notes": [{}] },
+    { "times": 5, "notesStructured": [{}] },
 
     {
       "times": 1,
-      "notesString": "2445x"
+      "notes": "2445x"
     },
-    { "times": 1, "notes": [{}] },
+    { "times": 1, "notesStructured": [{}] },
     {
       "times": 1,
-      "notesString": "0222x"
+      "notes": "0222x"
     },
-    { "times": 5, "notes": [{}] },
+    { "times": 5, "notesStructured": [{}] },
 
     {
       "times": 1,
-      "notesString": "32003"
+      "notes": "32003"
     },
-    { "times": 1, "notes": [{}] },
+    { "times": 1, "notesStructured": [{}] },
     {
       "times": 1,
-      "notesString": "2445x"
+      "notes": "2445x"
     },
-    { "times": 1, "notes": [{}] },
+    { "times": 1, "notesStructured": [{}] },
     {
       "times": 1,
-      "notesString": "0222x"
+      "notes": "0222x"
     }
 
   ]

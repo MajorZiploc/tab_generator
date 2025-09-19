@@ -3,7 +3,7 @@
   "tabMap": [
     {
       "times": 10,
-      "notes": [
+      "notesStructured": [
         {
           "stringNum": 6,
           "fret": 0
@@ -18,7 +18,7 @@
         }
       ]
     },
-    { "times": 2, "notes": [{ "stringNum": 4, "fret": 2 }] },
-    { "notes": [{ "stringNum": 4, "fret": 7 }] }
+    { "times": 2, "notesStructured": [{ "stringNum": 4, "fret": 2 }] },
+    { "notesStructured": [{ "stringNum": 4, "fret": 7 }] }
   ]
 }
