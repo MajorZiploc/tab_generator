@@ -26,7 +26,7 @@
       "times": 1,
       "notesString": "35543x"
     },
-    { "times": 5, "notes": [{}], "spacer": true },
+    { "times": 5, "notes": [{}] },
 
     {
       "times": 1,
@@ -37,7 +37,7 @@
       "times": 1,
       "notesString": "0222x"
     },
-    { "times": 5, "notes": [{}], "spacer": true },
+    { "times": 5, "notes": [{}] },
 
     {
       "times": 1,

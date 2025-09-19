@@ -30,12 +30,12 @@ function fillInNotes(notes, numOfStrings) {
 const genList = (times) => (c) => [...Array(times)].map(_ => c);
 
 /**
- * @type {(notes: Note[], numOfStrings: number, times: number, spacer: boolean) => Mark[]}
+ * @type {(notes: Note[], numOfStrings: number, times: number) => Mark[]}
  */
-function notesToString(notes, numOfStrings, times, spacer) {
+function notesToString(notes, numOfStrings, times) {
   const genListHelper = genList(times);
   return notes.map(n => ({
-    tabMarkers: n.fret == null ? genListHelper(spacer ? '-' : 'x') : genListHelper((n.fret ?? '') + ''),
+    tabMarkers: n.fret == null ? genListHelper('-') : genListHelper((n.fret ?? '') + ''),
     ...n,
   }));
 }
@@ -80,7 +80,7 @@ async function main() {
     tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, ...t, notes: fillInNotes(getNotesFromTMap(t), numOfStrings) })),
   };
   // console.log(JSON.stringify(fullTab, null, 2));
-  const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notes, numOfStrings, t.times ?? 1, t.spacer ?? false));
+  const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notes, numOfStrings, t.times ?? 1));
   const gStringStrs = [...Array(numOfStrings).keys()]
     .map(n => n + 1)
     .reduce((acc, currentString) => {
