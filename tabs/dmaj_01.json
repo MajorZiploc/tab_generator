@@ -24,148 +24,34 @@
     { "times": 1, "notes": [{}] },
     {
       "times": 1,
-      "notes": [
-        {
-          "stringNum": 6,
-          "fret": 3
-        },
-        {
-          "stringNum": 5,
-          "fret": 5
-        },
-        {
-          "stringNum": 4,
-          "fret": 5
-        },
-        {
-          "stringNum": 3,
-          "fret": 4
-        },
-        {
-          "stringNum": 2,
-          "fret": 3
-        }
-      ]
+      "notesString": "35543x"
     },
     { "times": 5, "notes": [{}], "spacer": true },
 
     {
       "times": 1,
-      "notes": [
-        {
-          "stringNum": 5,
-          "fret": 2
-        },
-        {
-          "stringNum": 4,
-          "fret": 4
-        },
-        {
-          "stringNum": 3,
-          "fret": 4
-        },
-        {
-          "stringNum": 2,
-          "fret": 5
-        }
-      ]
+      "notesString": "2445x"
     },
     { "times": 1, "notes": [{}] },
     {
       "times": 1,
-      "notes": [
-        {
-          "stringNum": 5,
-          "fret": 0
-        },
-        {
-          "stringNum": 4,
-          "fret": 2
-        },
-        {
-          "stringNum": 3,
-          "fret": 2
-        },
-        {
-          "stringNum": 2,
-          "fret": 2
-        }
-      ]
+      "notesString": "0222x"
     },
     { "times": 5, "notes": [{}], "spacer": true },
 
     {
       "times": 1,
-      "notes": [
-        {
-          "stringNum": 6,
-          "fret": 3
-        },
-        {
-          "stringNum": 5,
-          "fret": 2
-        },
-        {
-          "stringNum": 4,
-          "fret": 0
-        },
-        {
-          "stringNum": 3,
-          "fret": 0
-        },
-        {
-          "stringNum": 2,
-          "fret": 3
-        },
-        {
-          "stringNum": 1,
-          "fret": 3
-        }
-      ]
+      "notesString": "32003"
     },
     { "times": 1, "notes": [{}] },
     {
       "times": 1,
-      "notes": [
-        {
-          "stringNum": 5,
-          "fret": 2
-        },
-        {
-          "stringNum": 4,
-          "fret": 4
-        },
-        {
-          "stringNum": 3,
-          "fret": 4
-        },
-        {
-          "stringNum": 2,
-          "fret": 5
-        }
-      ]
+      "notesString": "2445x"
     },
     { "times": 1, "notes": [{}] },
     {
       "times": 1,
-      "notes": [
-        {
-          "stringNum": 5,
-          "fret": 0
-        },
-        {
-          "stringNum": 4,
-          "fret": 2
-        },
-        {
-          "stringNum": 3,
-          "fret": 2
-        },
-        {
-          "stringNum": 2,
-          "fret": 2
-        }
-      ]
+      "notesString": "0222x"
     }
 
   ]
