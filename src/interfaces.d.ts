@@ -5,8 +5,8 @@ export type Note = {
 
 export type Tmap = {
   times?: number;
-  notes: Note[];
-  notesString: string;
+  notesStructured: Note[];
+  notes: string;
 };
 
 export type Tab = {

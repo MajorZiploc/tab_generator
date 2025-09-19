@@ -58,7 +58,7 @@ function toNumElseId(thing) {
 }
 
 /** @type {(t: Tmap) => Note[]} */
-const getNotesFromTMap = t => t.notesString ? t.notesString.split('').reverse().map((e, idx) => ({stringNum: idx+1, fret: toNumElseId(e)})) : t.notes;
+const getNotesFromTMap = t => t.notesStructured ? t.notesStructured : (t.notes || '').split('').reverse().map((e, idx) => ({stringNum: idx+1, fret: toNumElseId(e)}));
 
 /**
  * @type {() => Promise<void>}
@@ -77,10 +77,10 @@ async function main() {
   // Set missing times to 1
   fullTab = {
     ...fullTab,
-    tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, ...t, notes: fillInNotes(getNotesFromTMap(t), numOfStrings) })),
+    tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, ...t, notesStructured: fillInNotes(getNotesFromTMap(t), numOfStrings) })),
   };
   // console.log(JSON.stringify(fullTab, null, 2));
-  const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notes, numOfStrings, t.times ?? 1));
+  const flattenedNotes = fullTab.tabMap.flatMap(t => notesToString(t.notesStructured, numOfStrings, t.times ?? 1));
   const gStringStrs = [...Array(numOfStrings).keys()]
     .map(n => n + 1)
     .reduce((acc, currentString) => {
