@@ -10,6 +10,8 @@
     "D->F#->G * 2; Bm->A * 1; G->Bm->A * 2;"
   ],
 
+  "invertTab": false,
+
   "tabMap": [
 
     {
