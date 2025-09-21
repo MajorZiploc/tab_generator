@@ -76,9 +76,10 @@ async function main() {
   /** @type {Tab} */
   const tab = await fs.readJSON(tabPath);
   let fullTab = tab;
-  const numOfStrings = tab.tuning.split('-').length;
+  const tuning = tab.tuning.split('-').reverse();
+  const numOfStrings = tuning.length;
   // console.log(numOfStrings);
-  // Set missing times to 1
+  // NOTE: Set missing times to 1
   fullTab = {
     ...fullTab,
     tabMap: fullTab.tabMap.map(t => ({ times: t.times ?? 1, ...t, notesStructured: fillInNotes(getNotesFromTMap(t), numOfStrings) })),
@@ -97,7 +98,7 @@ async function main() {
   // console.log(JSON.stringify(gStringStrs, null, 2));
   const prepedPrintValues = Object.entries(gStringStrs)
     .sort((g1, g2) => (g1[0] < g2[0] ? -1 : 1))
-    .map(o => ({ ...o, value: chunk(o[1].split(''), rowSize).map(c => c.join('')) }));
+    .map(o => ({ ...o, value: chunk([tuning[Number(o[0])-1] + "| "].concat(o[1].split('')), rowSize).map(c => c.join('')) }));
   // console.log(JSON.stringify(prepedPrintValues, null, 2));
   const numOfChunks = prepedPrintValues?.find(p => p.value)?.value?.length;
   const rowNotes = tab.rowNotes || [];
