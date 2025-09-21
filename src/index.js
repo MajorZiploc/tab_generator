@@ -18,7 +18,8 @@ function fillInNotes(notes, numOfStrings) {
   let currentString = 1;
   while (numOfStrings >= currentString) {
     if (!notes.some(n => n.stringNum === currentString)) {
-      // Add the missing string
+      // NOTE: Add the missing string
+      /** @type {Note} */
       const note = { stringNum: currentString };
       notes.push(note);
     }
@@ -95,9 +96,10 @@ async function main() {
       return acc;
     }, {});
   const rowSize = tab.rowSize ?? 40;
+  const invertTab = tab.invertTab == null ? false : tab.invertTab;
   // console.log(JSON.stringify(gStringStrs, null, 2));
   const prepedPrintValues = Object.entries(gStringStrs)
-    .sort((g1, g2) => (g1[0] < g2[0] ? -1 : 1))
+    .sort((g1, g2) => invertTab ? -1 : 1 * (g1[0] < g2[0] ? -1 : 1))
     .map(o => ({ ...o, value: chunk([tuning[Number(o[0])-1] + "| "].concat(o[1].split('')), rowSize).map(c => c.join('')) }));
   // console.log(JSON.stringify(prepedPrintValues, null, 2));
   const numOfChunks = prepedPrintValues?.find(p => p.value)?.value?.length;

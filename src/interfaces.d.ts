@@ -12,6 +12,7 @@ export type Tmap = {
 export type Tab = {
   scale?: string;
   tuning: string;
+  invertTab?: boolean;
   rowSize?: number;
   rowNotes?: string[];
   tabMap: Tmap[];
