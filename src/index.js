@@ -18,7 +18,8 @@ function fillInNotes(notes, numOfStrings) {
   let currentString = 1;
   while (numOfStrings >= currentString) {
     if (!notes.some(n => n.stringNum === currentString)) {
-      // Add the missing string
+      // NOTE: Add the missing string
+      /** @type {Note} */
       const note = { stringNum: currentString };
       notes.push(note);
     }
